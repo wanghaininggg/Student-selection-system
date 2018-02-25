@@ -1,0 +1,15 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+    <div class="jumbotron">
+    	
+    	{% if request.session.is_login %}
+            <h1>欢迎{{ request.session.user_name }}使用云南师范大学学生选课管理系统</h1>         
+                      
+        {% else %}
+            <h1>欢迎使用云南师范大学学生选课管理系统</h1>
+            <h2>请 <a href="{% url 'login' %}">登录</a></h2>
+        {% endif %}
+
+    </div> 
+{% endblock content %}

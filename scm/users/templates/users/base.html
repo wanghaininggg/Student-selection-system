@@ -1,0 +1,42 @@
+{% load bootstrap3 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>云南师范大学学生管理系统</title>
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"></button>
+                <a class="navbar-brand" href="{% url 'index' %}">云南师范大学学生管理系统</a>
+            </div>
+
+            <div class="nav navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                	{% if request.session.user_identity == "0" %}
+                        <li><a href="{% url 'teacherIndex' %}">教师个人主页</a></li>
+                    {% elif request.session.user_identity == "1" %}
+                        <li><a href="{% url 'studentIndex' %}">学生个人主页</a></li>
+                	{% endif %}
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    {% if request.session.is_login %}
+                        <li><a href="">当前在线：{{ request.session.user_id }}</a></li>
+                        <li><a href="{% url 'logout' %}">退出登录</a></li>
+                    {% else %}
+                        <li><a href="{% url 'login' %}">登录</a></li>
+                    {% endif %}
+                </ul>
+            </div>  
+        </div>   
+    </nav>
+    {% block content %}
+    {% endblock content %}
+</body>
+</html>
+
