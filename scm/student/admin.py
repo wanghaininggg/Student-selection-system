@@ -1,4 +1,9 @@
 from django.contrib import admin
 from .models import StudentUser
 # Register your models here.
-admin.site.register(StudentUser)
+class StudentUserAdmin(admin.ModelAdmin):
+    list_display = ('studentID','studentName', 'studentClass', 'studentMajor', 'studentInstitute')
+    search_fields = ['studentID']
+    list_filter = ('studentClass', 'studentMajor', 'studentInstitute',)
+
+admin.site.register(StudentUser, StudentUserAdmin)

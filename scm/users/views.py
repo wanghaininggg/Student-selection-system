@@ -13,9 +13,10 @@ def login(request):
     if request.method == 'POST':
         login_form = UserForm(request.POST)
         message = '请检查填写内容'
-        if login_form.is_valid():
-            username = request.POST.get('username', None)
-            password = request.POST.get('password', None)
+        if login_form.is_valid(): #数据验证
+        
+            username = login_form.cleaned_data['username']
+            password = login_form.cleaned_data['password']
 
             try:
                 user = User.objects.get(userID=username)
@@ -32,7 +33,7 @@ def login(request):
         else:
             return render(request, 'users/login.html', locals())
     else:
-        login_form = UserForm()
+        login_form = UserForm() #GET方法请求页面时，返回空表单，让用户填入数据
     return render(request, 'users/login.html', locals())
 
 def logout(request):
