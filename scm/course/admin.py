@@ -2,9 +2,9 @@ from django.contrib import admin
 from .models import Course, SelectCourse, StudentSelectCourse
 # Register your models here.
 class CourseAdmin(admin.ModelAdmin):
-    list_display = ('courseID', 'courseName', 'CourseGrade','courseCredit', 'courseMajor', 'coutseInstitute')
+    list_display = ('courseID', 'courseName', 'CourseGrade','courseCredit', 'courseMajor', 'courseInstitute')
     search_fields = ['courseID', 'courseName']
-    list_filter = ('CourseGrade', 'courseMajor', 'coutseInstitute')
+    list_filter = ('CourseGrade', 'courseMajor', 'courseInstitute')
     
 admin.site.register(Course, CourseAdmin)
 

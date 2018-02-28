@@ -33,5 +33,5 @@ urlpatterns = [
     path('student/', studentView.studentIndex, name='studentIndex'),
     path('studentInformation/', studentView.studentInformation, name='studentInformation'),
     path('studentScore/', studentView.studentScore, name='studentScore'),
-    path('studentSelectCourse/',studentView.studentSelectCourse, name='studentSelectCourse')
+    path('studentSelectCourse/',studentView.studentSelectCourse, name='studentSelectCourse'),
 ]

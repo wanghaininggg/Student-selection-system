@@ -7,12 +7,50 @@
 
 
   {% if scores %}
-   
+
 <div class="row-fluid">
                         <!-- block -->
                         <div class="block">
                             <div class="navbar navbar-inner block-header">
-                                <div class="muted pull-left">查看成绩</div>
+                                <div class="muted pull-left">成绩</div>
+                                <div class="pull-right"><span class="badge badge-warning">View More</span>
+
+                                </div>
+                            </div>
+                            <div class="block-content collapse in">
+                                <div class="span3">
+                                    <div class="chart" data-percent="{{ a }}">{{ a }}%</div>
+                                    <div class="chart-bottom-heading"><span class="label label-info">优秀</span>
+
+                                    </div>
+                                </div>
+                                <div class="span3">
+                                    <div class="chart" data-percent="{{ b }}">{{ b }}%</div>
+                                    <div class="chart-bottom-heading"><span class="label label-info">良好</span>
+
+                                    </div>
+                                </div>
+                                <div class="span3">
+                                    <div class="chart" data-percent="{{ c }}">{{ c }}%</div>
+                                    <div class="chart-bottom-heading"><span class="label label-info">及格</span>
+
+                                    </div>
+                                </div>
+                                <div class="span3">
+                                    <div class="chart" data-percent="{{ d }}">{{ d }}%</div>
+                                    <div class="chart-bottom-heading"><span class="label label-info">不及格</span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /block -->
+                    </div>
+<div class="row-fluid">
+                        <!-- block -->
+                        <div class="block">
+                            <div class="navbar navbar-inner block-header">
+                                <div class="muted pull-left">成绩表</div>
                             </div>
                             <div class="block-content collapse in">
                                 <div class="span12">
@@ -38,7 +76,7 @@
                                                 <td>{{ score.studentSelectCourse_courseCourseName }}</td>
                                                 <td>{{ score.studentSelectCourse_stduentStudentInstitute }}</td>
                                                 <td>{{ score.studentSelectCourse_courseTeacherName }}</td>
-                                                <td>{{ score.studentSelectCourse_score }}</td>
+                                                <td>{{ score.studentSelectCourse_score|default:'--' }}</td>
                                             </tr>
                              
                                            {% endfor %}

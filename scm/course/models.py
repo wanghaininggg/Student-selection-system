@@ -11,7 +11,7 @@ class Course(models.Model):
     courseCredit = models.CharField('课程学分', max_length=3)
     CourseGrade = models.CharField('年级', max_length=4, choices=gradeChoices, default='2017')
     courseMajor = models.ForeignKey(managementModels.Major, on_delete=models.CharField, verbose_name='所属专业')
-    coutseInstitute = models.ForeignKey(managementModels.Institute, on_delete=models.CharField, verbose_name='所属学院')
+    courseInstitute = models.ForeignKey(managementModels.Institute, on_delete=models.CharField, verbose_name='所属学院')
 
     class Meta:
         verbose_name='课程'
