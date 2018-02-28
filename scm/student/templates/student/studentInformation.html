@@ -1,0 +1,37 @@
+{% extends 'student/student_base.html' %}
+
+{% block title %}
+{{ request.session.user_name }}个人信息
+{% endblock title %}
+ {% block studentContent%}
+              
+                                <div class="block-content collapse in">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>学号</th>
+                                                <th>姓名</th>
+                                                <th>性别</th>
+                                                <th>班级</th>
+                                                <th>专业</th>
+                                                <th>学院</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td></td>
+                                                <td>{{ student }}</td>
+                                                <td>{{ student.studentName }}</td>
+                                                <td>{{ student.studentSex}}</td>
+                                                <td>{{ student.studentClass }}</td>
+                                                <td>{{ student.studentMajor }}</td>
+                                                <td>{{ student.studentInstitute }}</td>
+                                            </tr>
+                             
+                                        
+                                        </tbody>
+                                    </table>
+                                </div>
+                          
+ {% endblock studentContent %}

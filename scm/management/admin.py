@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Institute, Major, Class, Classroom
+from .models import Institute, Major, Class, Classroom, ClassTime
 # Register your models here.
 
 class InstituteAdmin(admin.ModelAdmin):
@@ -19,9 +19,10 @@ class ClassAdmin(admin.ModelAdmin):
     list_filter = ('classMajor', 'classInstitute')
 
 class ClassroomAdmin(admin.ModelAdmin):
-    list_display = ('classroomID', 'classroomName')
+    list_display = ('classroomName',)
 
 admin.site.register(Institute, InstituteAdmin)
 admin.site.register(Major, MajorAdmin)
 admin.site.register(Class, ClassAdmin)
 admin.site.register(Classroom, ClassroomAdmin)
+admin.site.register(ClassTime)

@@ -45,9 +45,8 @@ class Class(models.Model):
         return self.className
 
 class Classroom(models.Model):
-    classChoices = (('汇学楼101','汇学楼101'), ('致远楼205','致远楼205'))
-    classroomID = models.CharField('教室编号', max_length=20, primary_key=True)
-    classroomName = models.CharField('教室名称', choices=classChoices,max_length=30)
+    
+    classroomName = models.CharField('教室名称', max_length=30)
     
     class Meta:
         verbose_name='教室'
@@ -56,5 +55,13 @@ class Classroom(models.Model):
     def __str__(self):
         return self.classroomName           
 
+class ClassTime(models.Model):
 
-            
+    classTime = models.CharField('上课时间', max_length=30)
+
+    class Meta:
+        verbose_name='上课时间'
+        verbose_name_plural='上课时间'
+
+    def __str__(self):
+        return self.classTime

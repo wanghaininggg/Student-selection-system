@@ -1,4 +1,89 @@
 {% extends 'users/base.html' %}
 {% block content %}
-学生主页
+<!-- <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="{% url 'studentIndex' %}">个人主页<span class="sr-only">(current)</span></a></li>
+            <li><a href="{% url 'studentInformation' %}">个人信息</a></li>
+            <li><a href="{% url 'studentScore' %}">查看成绩</a></li>
+            <li><a href="{% url 'studentSelectCourse' %}">选课管理</a></li>
+          </ul>
+      
+ 
+        </div>
+        <div class="col-sm-9 col-md-10 main">
+          <h1 class="page-header">
+            {% block student %}
+            {% endblock student %}
+          </h1>
+            <div>
+                  {% block stucontent %}
+                  {% endblock stucontent %}
+            </div>
+        </div>
+      </div>
+    </div> -->
+     <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span3" id="sidebar">
+                    <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
+                        <li class="active">
+                            <a href="{% url 'studentIndex'%}"><i class="icon-chevron-right"></i> 学生主页</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'studentInformation' %}"><i class="icon-chevron-right"></i> 个人信息</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'studentScore' %}"><i class="icon-chevron-right"></i> 查看成绩</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'studentSelectCourse' %}"><i class="icon-chevron-right"></i> 选课管理</a>
+                        </li>
+                        <li>
+                            <a href="#"><span class="badge badge-success pull-right">...</span> 其他</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!--/span-->
+                <div class="span9" id="content">
+                    <div class="row-fluid">
+                          <div class="navbar">
+                              <div class="navbar-inner">
+                                  <ul class="breadcrumb">
+                                      <i class="icon-chevron-left hide-sidebar"><a href='#' title="Hide Sidebar" rel='tooltip'>&nbsp;</a></i>
+                                      <i class="icon-chevron-right show-sidebar" style="display:none;"><a href='#' title="Show Sidebar" rel='tooltip'>&nbsp;</a></i>
+                                      <li>
+                                          <a href="#">{% block title %}{% endblock title %}</a> <span class="divider">/</span>  
+                                      </li>
+                                      <!-- <li>
+                                          <a href="#">Settings</a> <span class="divider">/</span> 
+                                      </li>
+                                      <li class="active">Tools</li> -->
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+                    <div class="row-fluid">
+                        <!-- block -->
+                        <div class="block">
+                            <div class="navbar navbar-inner block-header">
+                                <div class="muted pull-left"></div>
+                                <div class="pull-right">
+
+                                </div>
+                            </div>
+                            <div class="block-content collapse in">
+                                {% block studentContent%}
+                                {% endblock studentContent %}
+                            </div>
+                        </div>
+                        <!-- /block -->
+                    </div>
+                </div>
+            </div>
+            <hr>
+          
+        </div>
 {% endblock content %}
