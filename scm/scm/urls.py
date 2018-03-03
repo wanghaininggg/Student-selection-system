@@ -29,6 +29,10 @@ urlpatterns = [
     path('captcha', include('captcha.urls')),
 
     path('teacher/', teacherView.teacherIndex, name='teacherIndex'),
+    path('teacherInformation', teacherView.teacherInformation, name='teacherInformation'),
+    path('teacherManagement/', teacherView.teacherManagement, name='teacherManagement'),
+    path('teacherCourse/', teacherView.teacherCourse, name='teacherCourse'),
+    path('teacherManagementClass/<int:classID>', teacherView.teacherManagementClass, name='teacherManagementClass'),
 
     path('student/', studentView.studentIndex, name='studentIndex'),
     path('studentInformation/', studentView.studentInformation, name='studentInformation'),

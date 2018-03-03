@@ -19,4 +19,5 @@ class StudentSelectCourseAdmin(admin.ModelAdmin):
     raw_id_fields = ('studentSelectCourse_course', 'studentSelectCourse_stduent')
     list_filter = ('studentSelectCourse_stduent__studentInstitute','studentSelectCourse_course__selectCourses__courseName', 'studentSelectCourse_course__selectCourseTeacher')
     search_fields = ['studentSelectCourse_course__selectCourses__courseName', 'studentSelectCourse_stduent__studentID__userID']
+    list_editable =('studentSelectCourse_score', )
 admin.site.register(StudentSelectCourse, StudentSelectCourseAdmin)

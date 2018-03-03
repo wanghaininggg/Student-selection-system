@@ -1,13 +1,7 @@
-{% extends 'student/student_base.html' %}
-
-{% block title %}
-{{ request.session.user_name }}个人信息
-{% endblock title %}
- {% block studentContent%}
-              
-     
-
-  <div class="row-fluid">
+{% extends 'teacher/teacher_base.html' %}
+{% block title %}<a href="#">个人信息</a> <span class="divider">/</span>  {% endblock title %}
+   {% block teacherContent%}
+       <div class="row-fluid">
                         <!-- block -->
                         <div class="block">
                             <div class="navbar navbar-inner block-header">
@@ -32,29 +26,24 @@
                                             </tr>
                                       </thead>
                                       <tbody>
-                                                 <tr><td>学号</td>
-                                                     <td>{{ student }}</td>
+                                                 <tr><td>工号</td>
+                                                     <td>{{ teacher.teacherID }}</td>
                                                 </tr>
                                                  <tr><td>密码</td>
-                                                     <td>{{ student.studentID.userPassword }}</td>
+                                                     <td>{{ teacher.teacherID.userPassword }}</td>
                                                 </tr>
                                                  <tr><td>姓名</td>
-                                                     <td>{{ student.studentName }}</td>
+                                                     <td>{{ teacher.teacherID.userName }}</td>
                                                 </tr>
                                                  <tr><td>性别</td>
-                                                     <td>{{ student.studentSex }}</td>
+                                                     <td>{{ teacher.teacherSex }}</td>
                                                 </tr>
-                                                 <tr><td>班级</td>
-                                                     <td>{{ student.studentClass }}</td>
-                                                </tr>
-                                                 <tr><td>专业</td>
-                                                      <td>{{ student.studentMajor }}</td>
-                                                </tr>
+
                                                  <tr><td>学院</td>
-                                                        <td>{{ student.studentInstitute }}</td>
+                                                     <td>{{ teacher.teacherInstitute }}</td>
                                                 </tr>
-                                             
-                                   
+  
+                                            </tr>
                                       </tbody>
                                     </table>
                                 </div>
@@ -62,4 +51,4 @@
                         </div>
                         <!-- /block -->
                     </div>
- {% endblock studentContent %}
+   {% endblock teacherContent %}

@@ -47,9 +47,9 @@
 
                     <ul class="nav">
                         {% if request.session.user_identity == "学生" %}
-                        <li><a href="{% url 'studentIndex' %}">学生个人主页</a></li>
+                        <li><a href="{% url 'studentIndex' %}">{{ request.session.user_name }}</a></li>
                         {% elif request.session.user_identity == "教师" %}
-                        <li><a href="{% url 'teacherIndex' %}">教师个人主页</a></li>
+                        <li><a href="{% url 'teacherIndex' %}">{{ request.session.user_name }}</a></li>
                         {% endif %} 
                     </ul>
 

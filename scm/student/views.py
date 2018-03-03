@@ -44,7 +44,6 @@ def studentSelectCourse(request):
     if request.method == 'POST':
         check_box_list = request.POST.getlist('check_box_list')
 
-
         for check in check_box_list:
             selectcourse = courseModels.SelectCourse.objects.get(selectCourseID=check)
             b = courseModels.StudentSelectCourse.objects.create(studentSelectCourse_course=selectcourse, studentSelectCourse_stduent=student)
@@ -53,4 +52,9 @@ def studentSelectCourse(request):
         courses = courseModels.SelectCourse.objects.exclude(studentselectcourse__studentSelectCourse_stduent=studentID)
         context = {'courses':courses}
         return render(request, 'student/studentSelectCourse.html', context)
+
+def studentDeleteCourse(request):
+
+    studentID = request.session['user_id']
+    student = StudentUser.objects.get(studentID=studentID)
 
