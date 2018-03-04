@@ -19,10 +19,12 @@ class ClassAdmin(admin.ModelAdmin):
     list_filter = ('classMajor', 'classInstitute')
 
 class ClassroomAdmin(admin.ModelAdmin):
-    list_display = ('classroomName',)
-
+    list_display = ('id','classroomName',)
+class ClassTimeAdmin(admin.ModelAdmin):
+    list_display = ('id', 'classTime',)
+        
 admin.site.register(Institute, InstituteAdmin)
 admin.site.register(Major, MajorAdmin)
 admin.site.register(Class, ClassAdmin)
 admin.site.register(Classroom, ClassroomAdmin)
-admin.site.register(ClassTime)
+admin.site.register(ClassTime, ClassTimeAdmin)

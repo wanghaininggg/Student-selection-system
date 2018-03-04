@@ -21,13 +21,17 @@ class Course(models.Model):
         return self.courseID
 
 class SelectCourse(models.Model):
-
+    
+    statusChoices = (('0','未开课'),('1','开课'),)
     selectCourseID = models.CharField('选课编号', max_length=20, primary_key=True)
     selectCourses = models.ForeignKey(Course, on_delete=models.CASCADE, verbose_name='课程编号')
     selectCourseTeacher = models.ForeignKey(teacherModels.TeacherUser, on_delete=models.CASCADE, verbose_name='教师工号')
-    selectCourseClassroom = models.ForeignKey(managementModels.Classroom, on_delete=models.CASCADE, verbose_name='上课教室')
-    selectCourseClassTime = models.ForeignKey(managementModels.ClassTime, on_delete=models.CASCADE, verbose_name='上课时间')
+    selectCourseClassroom = models.ForeignKey(managementModels.Classroom, on_delete=models.CASCADE, verbose_name='上课教室', blank=True, null=True)
+    selectCourseClassTime = models.ForeignKey(managementModels.ClassTime, on_delete=models.CASCADE, verbose_name='上课时间', blank=True, null=True)
+    selectCourseAllNum = models.IntegerField('课程总人数', blank=True, null=True)
+    selectCourseNum = models.IntegerField('已选人数', blank=True, null=True)
     selectCourseAddTime = models.DateField('添加时间', auto_now_add=True)
+    selectCourseStatus = models.CharField('课程状态', max_length=3, choices=statusChoices, default='0')
     def selectCourse_name(self):
         return self.selectCourses.courseName
     selectCourse_name.short_description = '课程名称'
@@ -47,6 +51,7 @@ class SelectCourse(models.Model):
         return self.selectCourseID
 
 class StudentSelectCourse(models.Model):
+
     studentSelectCourse_course = models.ForeignKey(SelectCourse, on_delete=models.CASCADE, verbose_name='课程')
     studentSelectCourse_stduent = models.ForeignKey(studentModels.StudentUser, on_delete=models.CASCADE, verbose_name='学生学号')
     studentSelectCourse_score =  models.CharField('成绩', max_length=10, blank=True, null=True)
@@ -76,4 +81,27 @@ class StudentSelectCourse(models.Model):
         ordering = ['-studentSelectCourseAddTime']
         verbose_name = '学生选课表'
         verbose_name_plural = '学生选课表'
+
+class TeacherApplyCourse(models.Model):
+    statusChoices = (('审核中','审核中'),('批准','批准'),('不同意','不同意'),)
+    teacherApplyCourse = models.ForeignKey(Course, on_delete=models.CASCADE, verbose_name='课程')
+    teacher = models.ForeignKey(teacherModels.TeacherUser, on_delete=models.CASCADE, verbose_name='教师工号')
+    status = models.CharField('状态', max_length=3, choices=statusChoices, default='审核中')
+    applyCourseAddTime = models.DateField('添加时间', auto_now_add=True)
+
+    def course_name(self):
+        return self.teacherApplyCourse.courseName
+    course_name.short_description = '课程名称'
+    courseName = property(course_name)
+
+    def teacher_name(self):
+        return self.teacher.teacherName
+    teacher_name.short_description = '教师姓名'
+    teacherName = property(teacher_name)
+
+    class Meta:
+        ordering = ['applyCourseAddTime']
+        verbose_name = '教师申请课程表'
+        verbose_name_plural = '教师申请课程表'
+
 

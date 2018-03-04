@@ -34,8 +34,10 @@ urlpatterns = [
     path('teacherCourse/', teacherView.teacherCourse, name='teacherCourse'),
     path('teacherManagementClass/<int:classID>', teacherView.teacherManagementClass, name='teacherManagementClass'),
 
+
     path('student/', studentView.studentIndex, name='studentIndex'),
     path('studentInformation/', studentView.studentInformation, name='studentInformation'),
     path('studentScore/', studentView.studentScore, name='studentScore'),
     path('studentSelectCourse/',studentView.studentSelectCourse, name='studentSelectCourse'),
+    path('studentDeleteCourse/', studentView.studentDeleteCourse, name='studentDeleteCourse'),
 ]

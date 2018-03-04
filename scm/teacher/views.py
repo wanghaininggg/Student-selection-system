@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import TeacherUser
 from course import models as courseModels
 from django.shortcuts import redirect
+from .forms import TeacherApplyCourseForm
 # Create your views here.
 def teacherIndex(request):
     pass
@@ -18,8 +19,20 @@ def teacherManagement(request):
     return render(request, 'teacher/teacherManagement.html', context)
 
 def teacherCourse(request):
-    pass
-    return render(request, 'teacher/teacherCourse.html')
+    
+    if request.method == 'POST':
+        form = TeacherApplyCourseForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('teacherCourse')
+
+    else:
+        form = TeacherApplyCourseForm() 
+        applyCourse = courseModels.TeacherApplyCourse.objects.filter(teacher=request.session['user_id'])
+        courses = courseModels.Course.objects.all()
+
+    context = {'form':form, 'applyCourse':applyCourse, 'courses':courses}
+    return render(request, 'teacher/teacherCourse.html', context)
 
 def teacherManagementClass(request, classID):
     students = courseModels.StudentSelectCourse.objects.filter(studentSelectCourse_course=classID)

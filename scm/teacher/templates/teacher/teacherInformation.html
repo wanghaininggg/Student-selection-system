@@ -2,53 +2,30 @@
 {% block title %}<a href="#">个人信息</a> <span class="divider">/</span>  {% endblock title %}
    {% block teacherContent%}
        <div class="row-fluid">
-                        <!-- block -->
-                        <div class="block">
-                            <div class="navbar navbar-inner block-header">
-                                <div class="muted pull-left">个人信息</div>
-                                
-                    
-                                <div class="pull-right"><span class="badge badge-warning"><a href="" >查看更多</a></span>
-
-                          
-                            </div>
-                            </div>
-
-                            <div class="block-content collapse in">
-                                <div class="span12">
-                                    <table class="table table-striped">
-                                      <thead>
-                                  <tr>
-                                                    <th></th>
-                                                <th></th>
-                                           
-                                             
-                                            </tr>
-                                      </thead>
-                                      <tbody>
-                                                 <tr><td>工号</td>
-                                                     <td>{{ teacher.teacherID }}</td>
-                                                </tr>
-                                                 <tr><td>密码</td>
-                                                     <td>{{ teacher.teacherID.userPassword }}</td>
-                                                </tr>
-                                                 <tr><td>姓名</td>
-                                                     <td>{{ teacher.teacherID.userName }}</td>
-                                                </tr>
-                                                 <tr><td>性别</td>
-                                                     <td>{{ teacher.teacherSex }}</td>
-                                                </tr>
-
-                                                 <tr><td>学院</td>
-                                                     <td>{{ teacher.teacherInstitute }}</td>
-                                                </tr>
-  
-                                            </tr>
-                                      </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /block -->
+            <div class="block">
+                <div class="navbar navbar-inner block-header">
+                    <div class="muted pull-left">个人信息</div>
+                    <div class="pull-right"><span class="badge badge-warning"><a href="" >查看更多</a></span></div>
+                </div>
+               <div class="block-content collapse in">
+                    <div class="span12">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>工号</td> <td>{{ teacher.teacherID }}</td></tr>
+                                <tr><td>密码</td> <td>{{ teacher.teacherID.userPassword }}</td></tr>
+                                <tr><td>姓名</td> <td>{{ teacher.teacherID.userName }}</td> </tr>
+                                <tr><td>性别</td> <td>{{ teacher.teacherSex }}</td></tr>
+                                <tr><td>学院</td> <td>{{ teacher.teacherInstitute }}</td></tr>
+                            </tbody>
+                        </table>
                     </div>
+                </div>
+            </div>
+        </div>
    {% endblock teacherContent %}

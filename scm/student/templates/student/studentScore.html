@@ -63,6 +63,8 @@
                                                 <th>课程名称</th>
                                                 <th>所属学院</th>
                                                 <th>任课教师</th>
+                                                <th>上课教室</th>
+                                                <th>上课时间</th>
                                                 <th>成绩</th>
                                             </tr>
                                         </thead>
@@ -76,7 +78,10 @@
                                                 <td>{{ score.studentSelectCourse_courseCourseName }}</td>
                                                 <td>{{ score.studentSelectCourse_stduentStudentInstitute }}</td>
                                                 <td>{{ score.studentSelectCourse_courseTeacherName }}</td>
+                                                <td>{{ score.studentSelectCourse_course.selectCourseClassroom }}</td>
+                                                <td>{{ score.studentSelectCourse_course.selectCourseClassTime }}</td>
                                                 <td>{{ score.studentSelectCourse_score|default:'--' }}</td>
+
                                             </tr>
                              
                                            {% endfor %}

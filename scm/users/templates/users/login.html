@@ -18,6 +18,9 @@
     <div class="container">
 
       <form class="form-signin" method="post" action="{% url 'login' %}">
+             {% if message %}
+                  <div class="alert alert-warning">{{ message }}</div>
+              {% endif %}
              {% csrf_token %}
         <h2 class="form-signin-heading">用户登录</h2>
 
